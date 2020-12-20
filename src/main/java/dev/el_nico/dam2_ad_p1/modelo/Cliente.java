@@ -408,9 +408,31 @@ public class Cliente {
         }
     }
 
+    public String infoResumen() {
+        return "ID: " + codigo + " | Nombre: " + nombre + " | Contacto: " + contacto.nombre.orElse("-----") + " " + contacto.apellido.orElse("-----");
+    }
+
     @Override
     public String toString() {
-        return codigo + " - " + nombre + ", Contacto: " + contacto.nombre.orElse("-----") + " " + contacto.apellido.orElse("-----");
-
+        String s = 
+              "\n============[ Cliente " + codigo + " ]============"
+            + "\nNombre: " + nombre
+            + "\nContacto {"
+            + "\n  Nom: " + contacto.nombre.orElse("------")
+            + "\n  Ape: " + contacto.apellido.orElse("------")
+            + "\n  Tlf: " + contacto.telefono
+            + "\n  Fax: " + contacto.fax
+            + "\n}"
+            + "\nDomicilio {"
+            + "\n  Ln1: " + domicilio.direccion1
+            + "\n  Ln2: " + domicilio.direccion2.orElse("------")
+            + "\n  Ciu: " + domicilio.ciudad
+            + "\n  Reg: " + domicilio.region.orElse("------")
+            + "\n  Pai: " + domicilio.pais.orElse("------")
+            + "\n   CP: " + domicilio.cp.orElse("------")
+            + "\n}"
+            + "\nRpVtas: " + (cod_empl_rep_ventas.isPresent() ? cod_empl_rep_ventas.get() : "------")
+            + "\nLimCrd: " + (limite_credito.isPresent() ? limite_credito.get() : "------");
+        return s;
     }
 }

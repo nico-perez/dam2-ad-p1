@@ -16,6 +16,7 @@ public class Main {
     public static void main(String[] args) {
         try (ConexionJardineria c = new ConexionJardineria()) {
 
+            // login
             String user, pass;
             do {
                 System.out.print("usuario: ");
@@ -26,6 +27,7 @@ public class Main {
 
             System.out.println("\nLogin OK!\n=========");
 
+            // bucle principal
             int orden = 0;
             do {
                 imprMenu();
@@ -33,6 +35,7 @@ public class Main {
                 acatar(orden, c);
             } while (orden != 0);
 
+            // logout
             System.out.println("\nCloseando conexión...\n");
         } catch (SQLException e) {
             System.out.println("Excepcion al closear;");
@@ -41,6 +44,7 @@ public class Main {
         }
     }
 
+    // llama a la funcion que corresponda
     private static void acatar(int orden, ConexionJardineria c) {
         switch (orden) {
             case 0: return;
@@ -96,7 +100,7 @@ public class Main {
 
         if (clientes.size() > 0) System.out.println();
         for (Cliente cliente : clientes) {
-            System.out.println(cliente);
+            System.out.println(cliente.infoResumen());
         }
     }
 
@@ -106,7 +110,7 @@ public class Main {
         
         if (clientes.size() > 0) System.out.println();
         for (Cliente cliente : clientes) {
-            System.out.println(cliente);
+            System.out.println(cliente.infoResumen());
         }
     }
 
